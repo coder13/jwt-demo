@@ -73,14 +73,12 @@ describe('Register user and login properly', () => {
     });
   });
   
-  step('POST /welcome', () => {
+  step('POST /welcome', async () => {
     return request
       .post('/welcome')
+      .set('Accept', 'application/json')
       .set('x-access-token', token)
-      .expect(200)
-      .expect((res, err) => {
-        if (err) throw err;
-      })
+      .expect(200, `Welcome ${user.email}!!`)
       .catch((err) => {
         throw err;
       });

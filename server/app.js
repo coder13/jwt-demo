@@ -96,8 +96,8 @@ app.post('/login', async (req, res) => {
 });
 
 app.post('/welcome', auth, (req, res) => {
-  console.log('/welcome');
-  res.status(200).send('Welcome!!');
+  console.log('/welcome', req.user);
+  res.status(200).send(`Welcome ${req.user.email}!!`);
 });
 
 module.exports = app;
